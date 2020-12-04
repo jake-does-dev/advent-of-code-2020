@@ -1,5 +1,6 @@
 package day1;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,36 +14,43 @@ public class ReportRepair {
         this.size = entries.size();
     }
 
-    int multiplyThePairThatSumsTo(int value) {
-        int slowPointer = 0;
-        int fastPointer = 1;
-        int firstSummand = 0;
-        int secondSummand = 0;
-
-        boolean isFound = false;
-        while(!isFound) {
-            int first = entries.get(slowPointer);
-            int second = entries.get(fastPointer);
-
-            if (first + second == value) {
-                firstSummand = first;
-                secondSummand = second;
-                isFound = true;
-            } else {
-                if (slowPointer + 1 > size) {
-                    slowPointer = 0;
-                } else {
-                    slowPointer++;
-                }
-
-                if (fastPointer + 2 > size) {
-                    fastPointer = 0;
-                } else {
-                    fastPointer++;
+    public int multiplyPairThatSumsTo(int value) {
+        for (int x : entries) {
+            for (int y : entries) {
+                if (sumTuple(x, y) == value) {
+                    return x * y;
                 }
             }
         }
+        return -1;
+    }
 
-        return firstSummand * secondSummand;
+    public int multiplyTripleThatSumsTo(int value) {
+        for (int x : entries) {
+            for (int y : entries) {
+                for (int z : entries) {
+                    if (sumTuple(x, y, z) == value) {
+                        return x * y * z;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    private int sumTuple(Integer... values) {
+        return new Tuple(values).sum();
+    }
+
+    static class Tuple {
+        List<Integer> numbers;
+
+        public Tuple(Integer[] numbers) {
+            this.numbers = Arrays.asList(numbers);
+        }
+
+        public int sum() {
+            return numbers.stream().mapToInt(i -> i).sum();
+        }
     }
 }

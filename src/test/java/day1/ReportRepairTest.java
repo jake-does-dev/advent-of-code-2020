@@ -12,22 +12,42 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class ReportRepairTest {
     @Test
-    public void smallCase() throws AdventException {
+    public void smallCasePair() throws AdventException {
         InputReader inputReader = new FileInputReader("src/test/resources/day1/smallCase.txt");
         List<Integer> entries = inputReader.readNumbers();
 
         ReportRepair reportRepair = new ReportRepair(entries);
 
-        assertThat(reportRepair.multiplyThePairThatSumsTo(2020), equalTo(514579));
+        assertThat(reportRepair.multiplyPairThatSumsTo(2020), equalTo(514579));
     }
 
     @Test
-    public void puzzleInput() throws AdventException {
+    public void smallCaseTriple() throws AdventException {
+        InputReader inputReader = new FileInputReader("src/test/resources/day1/smallCase.txt");
+        List<Integer> entries = inputReader.readNumbers();
+
+        ReportRepair reportRepair = new ReportRepair(entries);
+
+        assertThat(reportRepair.multiplyTripleThatSumsTo(2020), equalTo(241861950));
+    }
+
+    @Test
+    public void puzzleInputPair() throws AdventException {
         InputReader inputReader = new FileInputReader("src/test/resources/day1/puzzleInput.txt");
         List<Integer> entries = inputReader.readNumbers();
 
         ReportRepair reportRepair = new ReportRepair(entries);
 
-        System.out.println(reportRepair.multiplyThePairThatSumsTo(2020));
+        assertThat(reportRepair.multiplyPairThatSumsTo(2020), equalTo(1007104));
+    }
+
+    @Test
+    public void puzzleInputTriple() throws AdventException {
+        InputReader inputReader = new FileInputReader("src/test/resources/day1/puzzleInput.txt");
+        List<Integer> entries = inputReader.readNumbers();
+
+        ReportRepair reportRepair = new ReportRepair(entries);
+
+        assertThat(reportRepair.multiplyTripleThatSumsTo(2020), equalTo(18847752));
     }
 }
