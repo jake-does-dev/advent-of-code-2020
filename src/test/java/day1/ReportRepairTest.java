@@ -7,13 +7,13 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 public class ReportRepairTest {
     @Test
     public void smallCasePair() throws AdventException {
-        InputReader inputReader = new FileInputReader("src/test/resources/day1/smallCase.txt");
+        InputReader inputReader = FileInputReader.createWithSpaceSeparator("src/test/resources/day1/smallCase.txt");
         List<Integer> entries = inputReader.readNumbers();
 
         ReportRepair reportRepair = new ReportRepair(entries);
@@ -23,7 +23,7 @@ public class ReportRepairTest {
 
     @Test
     public void smallCaseTriple() throws AdventException {
-        InputReader inputReader = new FileInputReader("src/test/resources/day1/smallCase.txt");
+        InputReader inputReader = FileInputReader.createWithSpaceSeparator("src/test/resources/day1/smallCase.txt");
         List<Integer> entries = inputReader.readNumbers();
 
         ReportRepair reportRepair = new ReportRepair(entries);
@@ -33,7 +33,7 @@ public class ReportRepairTest {
 
     @Test
     public void puzzleInputPair() throws AdventException {
-        InputReader inputReader = new FileInputReader("src/test/resources/day1/puzzleInput.txt");
+        InputReader inputReader = FileInputReader.createWithSpaceSeparator("src/test/resources/day1/puzzleInput.txt");
         List<Integer> entries = inputReader.readNumbers();
 
         ReportRepair reportRepair = new ReportRepair(entries);
@@ -43,7 +43,7 @@ public class ReportRepairTest {
 
     @Test
     public void puzzleInputTriple() throws AdventException {
-        InputReader inputReader = new FileInputReader("src/test/resources/day1/puzzleInput.txt");
+        InputReader inputReader = FileInputReader.createWithSpaceSeparator("src/test/resources/day1/puzzleInput.txt");
         List<Integer> entries = inputReader.readNumbers();
 
         ReportRepair reportRepair = new ReportRepair(entries);
