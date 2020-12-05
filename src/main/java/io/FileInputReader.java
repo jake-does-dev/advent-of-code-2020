@@ -13,9 +13,12 @@ public class FileInputReader implements InputReader {
     private final String separator;
     private final String file;
 
-
     public static FileInputReader createWithSpaceSeparator(String file) {
         return new FileInputReader(file, " ") ;
+    }
+
+    public static FileInputReader createWithNoSeparator(String file) {
+        return new FileInputReader(file, "") ;
     }
 
     private FileInputReader(String file, String separator) {
