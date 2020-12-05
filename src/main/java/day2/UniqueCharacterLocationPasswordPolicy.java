@@ -11,6 +11,9 @@ public class UniqueCharacterLocationPasswordPolicy extends AbstractPasswordPolic
 
     @Override
     public boolean isPasswordValid(String password) {
-        return false;
+        char firstLocationChar = password.charAt(startValue - 1);
+        char secondLocationChar = password.charAt(endValue - 1);
+
+        return firstLocationChar == requiredCharacter ^ secondLocationChar == requiredCharacter;
     }
 }
