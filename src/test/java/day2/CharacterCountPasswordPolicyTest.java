@@ -3,7 +3,6 @@ package day2;
 import exceptions.AdventException;
 import io.FileInputReader;
 import io.InputReader;
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -12,11 +11,11 @@ import java.util.List;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 
-public class PasswordPolicyTest {
+public class CharacterCountPasswordPolicyTest {
 
     @Test
     public void simplePolicy() {
-        PasswordPolicy policy = PasswordPolicy.createPolicy(
+        PasswordPolicy policy = new CharacterCountPasswordPolicy(
                 new String[]{"1-3", "a:"});
 
         assertThat(policy.isPasswordValid("bleb"), equalTo(false));
@@ -49,7 +48,7 @@ public class PasswordPolicyTest {
             String[] rawPolicy = Arrays.copyOfRange(input, 0, input.length - 1);
             String password = input[input.length - 1];
 
-            PasswordPolicy policy = PasswordPolicy.createPolicy(rawPolicy);
+            PasswordPolicy policy = new CharacterCountPasswordPolicy(rawPolicy);
             if (policy.isPasswordValid(password)) {
                 numValidPassword++;
             }
