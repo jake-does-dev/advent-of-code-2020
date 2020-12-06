@@ -64,12 +64,12 @@ public class FileInputReader implements InputReader {
 
         try (BufferedReader br = Files.newBufferedReader(Paths.get(file))) {
             while(br.ready()) {
-                String[] lineParts = br.readLine().split(separator);
-                if (lineParts.length == 0) {
-                    lines.add((String[]) currentLine.toArray());
+                String line = br.readLine();
+                if (line.isEmpty()) {
+                    lines.add(currentLine.toArray(String[]::new));
                     currentLine = new ArrayList<>();
                 } else {
-                    currentLine.addAll(Arrays.asList(lineParts));
+                    currentLine.addAll(Arrays.asList(line.split(separator)));
                 }
             }
         } catch (IOException e) {

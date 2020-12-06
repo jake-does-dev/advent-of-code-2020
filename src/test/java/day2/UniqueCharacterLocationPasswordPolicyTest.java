@@ -28,7 +28,7 @@ public class UniqueCharacterLocationPasswordPolicyTest {
     @Test
     public void smallCase() throws AdventException {
         InputReader inputReader = FileInputReader.createWithSpaceSeparator("src/test/resources/day2/smallCase.txt");
-        List<String[]> inputs = inputReader.readLines();
+        List<String[]> inputs = inputReader.readData();
 
         assertThat(numValidPasswords(inputs), equalTo(1));
     }
@@ -36,7 +36,7 @@ public class UniqueCharacterLocationPasswordPolicyTest {
     @Test
     public void puzzleInput() throws AdventException {
         InputReader inputReader = FileInputReader.createWithSpaceSeparator("src/test/resources/day2/puzzleInput.txt");
-        List<String[]> inputs = inputReader.readLines();
+        List<String[]> inputs = inputReader.readData();
 
         assertThat(numValidPasswords(inputs), equalTo(611));
     }
