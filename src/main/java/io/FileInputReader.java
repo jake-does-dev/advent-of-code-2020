@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileInputReader implements InputReader {
@@ -26,6 +27,7 @@ public class FileInputReader implements InputReader {
         this.separator = separator;
     }
 
+    @Override
     public List<Integer> readNumbers() throws AdventException {
         List<Integer> numbers = new ArrayList<>();
 
@@ -41,12 +43,34 @@ public class FileInputReader implements InputReader {
     }
 
     @Override
-    public List<String[]> readLines() throws AdventException {
+    public List<String[]> readData() throws AdventException {
         List<String[]> lines = new ArrayList<>();
 
         try (BufferedReader br = Files.newBufferedReader(Paths.get(file))) {
             while(br.ready()) {
                 lines.add(br.readLine().split(separator));
+            }
+        } catch (IOException e) {
+            throw new AdventException("Problem with reading input: " + e.getMessage(), e);
+        }
+
+        return lines;
+    }
+
+    @Override
+    public List<String[]> readDataWithLineBreaks() throws AdventException {
+        List<String[]> lines = new ArrayList<>();
+        List<String> currentLine = new ArrayList<>();
+
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(file))) {
+            while(br.ready()) {
+                String[] lineParts = br.readLine().split(separator);
+                if (lineParts.length == 0) {
+                    lines.add((String[]) currentLine.toArray());
+                    currentLine = new ArrayList<>();
+                } else {
+                    currentLine.addAll(Arrays.asList(lineParts));
+                }
             }
         } catch (IOException e) {
             throw new AdventException("Problem with reading input: " + e.getMessage(), e);

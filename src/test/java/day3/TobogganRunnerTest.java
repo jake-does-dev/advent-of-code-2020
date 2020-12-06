@@ -17,7 +17,7 @@ public class TobogganRunnerTest {
     @Test
     public void smallCaseSingleManoeuvreCountTrees() throws AdventException {
         InputReader inputReader = FileInputReader.createWithNoSeparator("src/test/resources/day3/smallCase.txt");
-        List<String[]> slope = inputReader.readLines();
+        List<String[]> slope = inputReader.readData();
 
         TobogganRunner runner = TobogganRunner.createRuns(
             slope,
@@ -29,7 +29,7 @@ public class TobogganRunnerTest {
     @Test
     public void smallCaseMultipleManoeuvreMultiplyTrees() throws AdventException {
         InputReader inputReader = FileInputReader.createWithNoSeparator("src/test/resources/day3/smallCase.txt");
-        List<String[]> slope = inputReader.readLines();
+        List<String[]> slope = inputReader.readData();
 
         TobogganRunner runner = TobogganRunner.createRuns(
             slope,
@@ -48,7 +48,7 @@ public class TobogganRunnerTest {
     @Test
     public void puzzleInputSingleManoeuvreCountTrees() throws AdventException {
         InputReader inputReader = FileInputReader.createWithNoSeparator("src/test/resources/day3/puzzleInput.txt");
-        List<String[]> slope = inputReader.readLines();
+        List<String[]> slope = inputReader.readData();
 
         TobogganRunner runner = TobogganRunner.createRuns(
             slope,
@@ -60,7 +60,7 @@ public class TobogganRunnerTest {
     @Test
     public void puzzleInputMultipleManoeuvreMultiplyTrees() throws AdventException {
         InputReader inputReader = FileInputReader.createWithNoSeparator("src/test/resources/day3/puzzleInput.txt");
-        List<String[]> slope = inputReader.readLines();
+        List<String[]> slope = inputReader.readData();
 
         TobogganRunner runner = TobogganRunner.createRuns(
             slope,
