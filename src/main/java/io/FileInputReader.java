@@ -58,6 +58,21 @@ public class FileInputReader implements InputReader {
     }
 
     @Override
+    public List<String> readLines() throws AdventException {
+        List<String> lines = new ArrayList<>();
+
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(file))) {
+            while(br.ready()) {
+                lines.add(br.readLine());
+            }
+        } catch (IOException e) {
+            throw new AdventException("Problem with reading input: " + e.getMessage(), e);
+        }
+
+        return lines;
+    }
+
+    @Override
     public List<String[]> readDataWithLineBreaks() throws AdventException {
         List<String[]> lines = new ArrayList<>();
         List<String> currentLine = new ArrayList<>();
