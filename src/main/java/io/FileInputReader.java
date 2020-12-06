@@ -91,6 +91,7 @@ public class FileInputReader implements InputReader {
             throw new AdventException("Problem with reading input: " + e.getMessage(), e);
         }
 
+        lines.add(currentLine.toArray(String[]::new));
         return lines;
     }
 }
