@@ -1,5 +1,8 @@
 package day5;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class SeatFinder {
 
     public Seat findSeat(String binarySpacePartitioning) {

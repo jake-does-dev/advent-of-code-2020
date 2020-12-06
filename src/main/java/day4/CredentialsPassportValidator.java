@@ -69,6 +69,6 @@ public class CredentialsPassportValidator implements PassportValidator {
         return validators.stream()
             .map(CredentialValidator::isValid)
             .reduce((x, y) -> x && y)
-            .get();
+            .orElseThrow();
     }
 }
